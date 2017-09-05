@@ -33,6 +33,7 @@ import com.liferay.portal.kernel.workflow.WorkflowDefinitionManagerUtil;
 import com.liferay.portal.workflow.web.internal.display.context.util.WorkflowDefinitionRequestHelper;
 import com.liferay.portal.workflow.web.internal.search.WorkflowDefinitionSearchTerms;
 import com.liferay.portal.workflow.web.internal.util.WorkflowDefinitionPortletUtil;
+import com.liferay.portal.workflow.web.internal.util.filter.WorkflowDefinitionDescriptionPredicateFilter;
 import com.liferay.portal.workflow.web.internal.util.filter.WorkflowDefinitionNamePredicateFilter;
 import com.liferay.portal.workflow.web.internal.util.filter.WorkflowDefinitionTitlePredicateFilter;
 
@@ -89,7 +90,7 @@ public class WorkflowDefinitionDisplayContext {
 
 		if (searchTerms.isAdvancedSearch()) {
 			workflowDefinitions = filter(
-				workflowDefinitions, searchTerms.getName(),
+				workflowDefinitions, searchTerms.getDescription(),
 				searchTerms.getTitle(), searchTerms.isAndOperator());
 		}
 		else {
@@ -144,34 +145,34 @@ public class WorkflowDefinitionDisplayContext {
 	}
 
 	protected PredicateFilter<WorkflowDefinition> createPredicateFilter(
-		String name, String title, boolean andOperator) {
+		String description, String title, boolean andOperator) {
 
 		AggregatePredicateFilter<WorkflowDefinition> aggregatePredicateFilter =
 			new AggregatePredicateFilter<>(
-				new WorkflowDefinitionNamePredicateFilter(name));
+				new WorkflowDefinitionTitlePredicateFilter(title));
 
 		if (andOperator) {
 			aggregatePredicateFilter.and(
-				new WorkflowDefinitionTitlePredicateFilter(title));
+				new WorkflowDefinitionDescriptionPredicateFilter(description));
 		}
 		else {
 			aggregatePredicateFilter.or(
-				new WorkflowDefinitionTitlePredicateFilter(title));
+				new WorkflowDefinitionDescriptionPredicateFilter(description));
 		}
 
 		return aggregatePredicateFilter;
 	}
 
 	protected List<WorkflowDefinition> filter(
-		List<WorkflowDefinition> workflowDefinitions, String name, String title,
-		boolean andOperator) {
+		List<WorkflowDefinition> workflowDefinitions, String description,
+		String title, boolean andOperator) {
 
-		if (Validator.isNull(name) && Validator.isNull(title)) {
+		if (Validator.isNull(title) && Validator.isNull(description)) {
 			return workflowDefinitions;
 		}
 
 		PredicateFilter<WorkflowDefinition> predicateFilter =
-			createPredicateFilter(name, title, andOperator);
+			createPredicateFilter(description, title, andOperator);
 
 		return ListUtil.filter(workflowDefinitions, predicateFilter);
 	}

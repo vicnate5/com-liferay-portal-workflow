@@ -25,6 +25,10 @@ import java.util.Map;
  */
 public class WorkflowDefinitionImpl implements WorkflowDefinition {
 
+	public WorkflowDefinitionImpl(boolean active) {
+		this(null, null, null, active);
+	}
+
 	public WorkflowDefinitionImpl(String name, String title) {
 		this(name, title, null);
 	}
@@ -35,6 +39,15 @@ public class WorkflowDefinitionImpl implements WorkflowDefinition {
 		_name = name;
 		_title = title;
 		_description = description;
+	}
+
+	public WorkflowDefinitionImpl(
+		String name, String title, String description, boolean active) {
+
+		_name = name;
+		_title = title;
+		_description = description;
+		_active = active;
 	}
 
 	@Override
@@ -79,9 +92,10 @@ public class WorkflowDefinitionImpl implements WorkflowDefinition {
 
 	@Override
 	public boolean isActive() {
-		return false;
+		return _active;
 	}
 
+	private boolean _active;
 	private String _description;
 	private final String _name;
 	private final String _title;

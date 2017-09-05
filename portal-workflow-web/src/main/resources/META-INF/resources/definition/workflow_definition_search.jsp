@@ -30,6 +30,6 @@ WorkflowDefinitionDisplayTerms displayTerms = new WorkflowDefinitionDisplayTerms
 	<aui:fieldset>
 		<aui:input inlineField="<%= true %>" name="<%= WorkflowDefinitionDisplayTerms.NAME %>" size="20" type="text" value="<%= displayTerms.getName() %>" />
 
-		<aui:input inlineField="<%= true %>" name="<%= WorkflowDefinitionDisplayTerms.TITLE %>" size="20" type="text" value="<%= displayTerms.getTitle() %>" />
+		<aui:input inlineField="<%= true %>" name="<%= WorkflowDefinitionDisplayTerms.DESCRIPTION %>" size="20" type="text" value="<%= displayTerms.getDescription() %>" />
 	</aui:fieldset>
 </liferay-ui:search-toggle>

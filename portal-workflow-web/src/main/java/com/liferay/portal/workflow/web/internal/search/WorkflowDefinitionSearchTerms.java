@@ -28,7 +28,7 @@ public class WorkflowDefinitionSearchTerms
 		super(portletRequest);
 
 		name = DAOParamUtil.getString(portletRequest, NAME);
-		title = DAOParamUtil.getString(portletRequest, TITLE);
+		description = DAOParamUtil.getString(portletRequest, DESCRIPTION);
 	}
 
 }

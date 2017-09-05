@@ -95,7 +95,7 @@ WorkflowDefinitionSearch workflowDefinitionSearch = new WorkflowDefinitionSearch
 		<liferay-frontend:management-bar-sort
 			orderByCol="<%= orderByCol %>"
 			orderByType="<%= orderByType %>"
-			orderColumns='<%= new String[] {"active", "name", "title"} %>'
+			orderColumns='<%= new String[] {"title", "last-modified"} %>'
 			portletURL="<%= portletURL %>"
 		/>
 	</liferay-frontend:management-bar-filters>

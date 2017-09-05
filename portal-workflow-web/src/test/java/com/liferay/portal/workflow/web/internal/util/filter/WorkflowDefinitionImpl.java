@@ -26,13 +26,25 @@ import java.util.Map;
 public class WorkflowDefinitionImpl implements WorkflowDefinition {
 
 	public WorkflowDefinitionImpl(String name, String title) {
+		this(name, title, null);
+	}
+
+	public WorkflowDefinitionImpl(
+		String name, String title, String description) {
+
 		_name = name;
 		_title = title;
+		_description = description;
 	}
 
 	@Override
 	public String getContent() {
 		return null;
+	}
+
+	@Override
+	public String getDescription() {
+		return _description;
 	}
 
 	@Override
@@ -70,6 +82,7 @@ public class WorkflowDefinitionImpl implements WorkflowDefinition {
 		return false;
 	}
 
+	private String _description;
 	private final String _name;
 	private final String _title;
 

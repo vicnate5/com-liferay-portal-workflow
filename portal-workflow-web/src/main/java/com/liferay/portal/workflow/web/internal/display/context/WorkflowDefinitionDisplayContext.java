@@ -30,9 +30,11 @@ import com.liferay.portal.kernel.util.PredicateFilter;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.kernel.workflow.WorkflowDefinition;
 import com.liferay.portal.kernel.workflow.WorkflowDefinitionManagerUtil;
+import com.liferay.portal.workflow.web.internal.constants.WorkflowDefinitionConstants;
 import com.liferay.portal.workflow.web.internal.display.context.util.WorkflowDefinitionRequestHelper;
 import com.liferay.portal.workflow.web.internal.search.WorkflowDefinitionSearchTerms;
 import com.liferay.portal.workflow.web.internal.util.WorkflowDefinitionPortletUtil;
+import com.liferay.portal.workflow.web.internal.util.filter.WorkflowDefinitionActivePredicateFilter;
 import com.liferay.portal.workflow.web.internal.util.filter.WorkflowDefinitionDescriptionPredicateFilter;
 import com.liferay.portal.workflow.web.internal.util.filter.WorkflowDefinitionNamePredicateFilter;
 
@@ -75,7 +77,7 @@ public class WorkflowDefinitionDisplayContext {
 	}
 
 	public List<WorkflowDefinition> getSearchContainerResults(
-			SearchContainer<WorkflowDefinition> searchContainer)
+			SearchContainer<WorkflowDefinition> searchContainer, int status)
 		throws PortalException {
 
 		List<WorkflowDefinition> workflowDefinitions =
@@ -90,12 +92,13 @@ public class WorkflowDefinitionDisplayContext {
 		if (searchTerms.isAdvancedSearch()) {
 			workflowDefinitions = filter(
 				workflowDefinitions, searchTerms.getName(),
-				searchTerms.getDescription(), searchTerms.isAndOperator());
+				searchTerms.getDescription(), status,
+				searchTerms.isAndOperator());
 		}
 		else {
 			workflowDefinitions = filter(
 				workflowDefinitions, searchTerms.getKeywords(),
-				searchTerms.getKeywords(), false);
+				searchTerms.getKeywords(), status, false);
 		}
 
 		searchContainer.setTotal(workflowDefinitions.size());
@@ -144,7 +147,7 @@ public class WorkflowDefinitionDisplayContext {
 	}
 
 	protected PredicateFilter<WorkflowDefinition> createPredicateFilter(
-		String name, String description, boolean andOperator) {
+		String name, String description, int status, boolean andOperator) {
 
 		AggregatePredicateFilter<WorkflowDefinition> aggregatePredicateFilter =
 			new AggregatePredicateFilter<>(
@@ -159,19 +162,24 @@ public class WorkflowDefinitionDisplayContext {
 				new WorkflowDefinitionDescriptionPredicateFilter(description));
 		}
 
+		aggregatePredicateFilter.and(
+			new WorkflowDefinitionActivePredicateFilter(status));
+
 		return aggregatePredicateFilter;
 	}
 
 	protected List<WorkflowDefinition> filter(
 		List<WorkflowDefinition> workflowDefinitions, String name,
-		String description, boolean andOperator) {
+		String description, int status, boolean andOperator) {
 
-		if (Validator.isNull(name) && Validator.isNull(description)) {
+		if ((status == WorkflowDefinitionConstants.STATUS_ALL) &&
+			Validator.isNull(name) && Validator.isNull(description)) {
+
 			return workflowDefinitions;
 		}
 
 		PredicateFilter<WorkflowDefinition> predicateFilter =
-			createPredicateFilter(name, description, andOperator);
+			createPredicateFilter(name, description, status, andOperator);
 
 		return ListUtil.filter(workflowDefinitions, predicateFilter);
 	}

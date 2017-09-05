@@ -23,6 +23,15 @@ int delta = ParamUtil.getInteger(request, SearchContainer.DEFAULT_DELTA_PARAM);
 String navigation = ParamUtil.getString(request, "navigation", "definitions");
 String definitionsNavigation = ParamUtil.getString(request, "definitionsNavigation");
 
+int displayedStatus = WorkflowDefinitionConstants.STATUS_ALL;
+
+if (StringUtil.equals(definitionsNavigation, "published")) {
+	displayedStatus = WorkflowDefinitionConstants.STATUS_PUBLISHED;
+}
+else if (StringUtil.equals(definitionsNavigation, "not-published")) {
+	displayedStatus = WorkflowDefinitionConstants.STATUS_NOT_PUBLISHED;
+}
+
 String orderByCol = ParamUtil.getString(request, "orderByCol", "name");
 String orderByType = ParamUtil.getString(request, "orderByType", "asc");
 
@@ -78,7 +87,7 @@ WorkflowDefinitionSearch workflowDefinitionSearch = new WorkflowDefinitionSearch
 
 	<liferay-frontend:management-bar-filters>
 		<liferay-frontend:management-bar-navigation
-			navigationKeys='<%= new String[] {"all"} %>'
+			navigationKeys='<%= new String[] {"all", "published", "not-published"} %>'
 			navigationParam="definitionsNavigation"
 			portletURL="<%= navigationPortletURL %>"
 		/>
@@ -104,7 +113,7 @@ WorkflowDefinitionSearch workflowDefinitionSearch = new WorkflowDefinitionSearch
 		%>
 
 		<liferay-ui:search-container-results
-			results="<%= workflowDefinitionDisplayContext.getSearchContainerResults(searchContainer) %>"
+			results="<%= workflowDefinitionDisplayContext.getSearchContainerResults(searchContainer, displayedStatus) %>"
 		/>
 
 		<liferay-ui:search-container-row

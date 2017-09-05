@@ -43,7 +43,7 @@ if (delta > 0) {
 	navigationPortletURL.setParameter("delta", String.valueOf(delta));
 }
 
-navigationPortletURL.setParameter("orderBycol", orderByCol);
+navigationPortletURL.setParameter("orderByCol", orderByCol);
 navigationPortletURL.setParameter("orderByType", orderByType);
 
 PortletURL portletURL = renderResponse.createRenderURL();

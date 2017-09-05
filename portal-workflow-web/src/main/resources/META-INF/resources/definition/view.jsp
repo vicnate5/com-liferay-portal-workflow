@@ -123,26 +123,21 @@ WorkflowDefinitionSearch workflowDefinitionSearch = new WorkflowDefinitionSearch
 
 			<liferay-ui:search-container-column-text
 				href="<%= rowURL %>"
-				name="name"
-				value="<%= workflowDefinitionDisplayContext.getName(workflowDefinition) %>"
-			/>
-
-			<liferay-ui:search-container-column-text
-				href="<%= rowURL %>"
 				name="title"
 				value="<%= workflowDefinitionDisplayContext.getTitle(workflowDefinition) %>"
 			/>
 
 			<liferay-ui:search-container-column-text
 				href="<%= rowURL %>"
-				name="version"
-				value="<%= workflowDefinitionDisplayContext.getVersion(workflowDefinition) %>"
+				name="description"
+				value="<%= workflowDefinitionDisplayContext.getDescription(workflowDefinition) %>"
 			/>
 
-			<liferay-ui:search-container-column-text
+			<liferay-ui:search-container-column-date
 				href="<%= rowURL %>"
-				name="active"
-				value="<%= workflowDefinitionDisplayContext.getActive(workflowDefinition) %>"
+				name="last-modified"
+				userName="<%= workflowDefinitionDisplayContext.getUserName(workflowDefinition) %>"
+				value="<%= workflowDefinition.getModifiedDate() %>"
 			/>
 
 			<liferay-ui:search-container-column-jsp

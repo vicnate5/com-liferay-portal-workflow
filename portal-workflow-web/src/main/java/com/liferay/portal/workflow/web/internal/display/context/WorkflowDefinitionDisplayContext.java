@@ -18,6 +18,8 @@ import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.dao.search.SearchContainer;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.language.LanguageUtil;
+import com.liferay.portal.kernel.model.User;
+import com.liferay.portal.kernel.service.UserLocalService;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
 import com.liferay.portal.kernel.util.AggregatePredicateFilter;
 import com.liferay.portal.kernel.util.HtmlUtil;
@@ -45,7 +47,10 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class WorkflowDefinitionDisplayContext {
 
-	public WorkflowDefinitionDisplayContext(RenderRequest renderRequest) {
+	public WorkflowDefinitionDisplayContext(
+		RenderRequest renderRequest, UserLocalService userLocalService) {
+
+		_userLocalService = userLocalService;
 		_workflowDefinitionRequestHelper = new WorkflowDefinitionRequestHelper(
 			renderRequest);
 	}
@@ -59,6 +64,10 @@ public class WorkflowDefinitionDisplayContext {
 		}
 
 		return LanguageUtil.get(request, "no");
+	}
+
+	public String getDescription(WorkflowDefinition workflowDefinition) {
+		return HtmlUtil.escape(workflowDefinition.getDescription());
 	}
 
 	public String getName(WorkflowDefinition workflowDefinition) {
@@ -108,6 +117,18 @@ public class WorkflowDefinitionDisplayContext {
 
 		return HtmlUtil.escape(
 			workflowDefinition.getTitle(themeDisplay.getLanguageId()));
+	}
+
+	public String getUserName(WorkflowDefinition workflowDefinition) {
+		User user = _userLocalService.fetchUser(workflowDefinition.getUserId());
+
+		if ((user == null) || user.isDefaultUser() ||
+			Validator.isNull(user.getFullName())) {
+
+			return null;
+		}
+
+		return user.getFullName();
 	}
 
 	public String getVersion(WorkflowDefinition workflowDefinition) {
@@ -172,6 +193,7 @@ public class WorkflowDefinitionDisplayContext {
 				_workflowDefinitionRequestHelper.getLocale());
 	}
 
+	private final UserLocalService _userLocalService;
 	private final WorkflowDefinitionRequestHelper
 		_workflowDefinitionRequestHelper;
 

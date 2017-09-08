@@ -24,26 +24,26 @@ import javax.portlet.PortletRequest;
  */
 public class WorkflowDefinitionDisplayTerms extends DisplayTerms {
 
-	public static final String NAME = "name";
+	public static final String DESCRIPTION = "description";
 
-	public static final String TITLE = "title";
+	public static final String NAME = "name";
 
 	public WorkflowDefinitionDisplayTerms(PortletRequest portletRequest) {
 		super(portletRequest);
 
 		name = ParamUtil.getString(portletRequest, NAME);
-		title = ParamUtil.getString(portletRequest, TITLE);
+		description = ParamUtil.getString(portletRequest, DESCRIPTION);
+	}
+
+	public String getDescription() {
+		return description;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public String getTitle() {
-		return title;
-	}
-
+	protected String description;
 	protected String name;
-	protected String title;
 
 }

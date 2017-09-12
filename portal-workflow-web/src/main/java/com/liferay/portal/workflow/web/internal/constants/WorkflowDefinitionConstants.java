@@ -12,23 +12,17 @@
  * details.
  */
 
-package com.liferay.portal.workflow.web.internal.search;
-
-import com.liferay.portal.kernel.dao.search.DAOParamUtil;
-
-import javax.portlet.PortletRequest;
+package com.liferay.portal.workflow.web.internal.constants;
 
 /**
- * @author Leonardo Barros
+ * @author Adam Brandizzi
  */
-public class WorkflowDefinitionSearchTerms
-	extends WorkflowDefinitionDisplayTerms {
+public class WorkflowDefinitionConstants {
 
-	public WorkflowDefinitionSearchTerms(PortletRequest portletRequest) {
-		super(portletRequest);
+	public static final int STATUS_ALL = 0;
 
-		description = DAOParamUtil.getString(portletRequest, DESCRIPTION);
-		title = DAOParamUtil.getString(portletRequest, TITLE);
-	}
+	public static final int STATUS_NOT_PUBLISHED = 1;
+
+	public static final int STATUS_PUBLISHED = 2;
 
 }

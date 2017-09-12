@@ -18,6 +18,7 @@ import com.liferay.portal.kernel.workflow.WorkflowDefinition;
 
 import java.io.InputStream;
 
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -25,9 +26,35 @@ import java.util.Map;
  */
 public class WorkflowDefinitionImpl implements WorkflowDefinition {
 
+	public WorkflowDefinitionImpl(boolean active) {
+		this(null, null, null, null, active);
+	}
+
+	public WorkflowDefinitionImpl(Date modifiedDate) {
+		this(null, null, null, modifiedDate, false);
+	}
+
 	public WorkflowDefinitionImpl(String name, String title) {
+		this(name, title, null);
+	}
+
+	public WorkflowDefinitionImpl(
+		String name, String title, String description) {
+
 		_name = name;
 		_title = title;
+		_description = description;
+	}
+
+	public WorkflowDefinitionImpl(
+		String name, String title, String description, Date modifiedDate,
+		boolean active) {
+
+		_name = name;
+		_title = title;
+		_description = description;
+		_modifiedDate = modifiedDate;
+		_active = active;
 	}
 
 	@Override
@@ -36,8 +63,18 @@ public class WorkflowDefinitionImpl implements WorkflowDefinition {
 	}
 
 	@Override
+	public String getDescription() {
+		return _description;
+	}
+
+	@Override
 	public InputStream getInputStream() {
 		return null;
+	}
+
+	@Override
+	public Date getModifiedDate() {
+		return _modifiedDate;
 	}
 
 	@Override
@@ -67,9 +104,12 @@ public class WorkflowDefinitionImpl implements WorkflowDefinition {
 
 	@Override
 	public boolean isActive() {
-		return false;
+		return _active;
 	}
 
+	private boolean _active;
+	private String _description;
+	private Date _modifiedDate;
 	private final String _name;
 	private final String _title;
 

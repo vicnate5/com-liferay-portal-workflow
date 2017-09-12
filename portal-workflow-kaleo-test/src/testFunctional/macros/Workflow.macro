@@ -936,10 +936,6 @@
 	</command>
 
 	<command name="viewDefinition">
-		<var name="key_workflowDefinitionName" value="${workflowDefinitionName}" />
-
-		<execute function="AssertTextEquals" locator1="WorkflowDefinition#DEFINITION_TABLE_NAME" value1="${workflowDefinitionName}" />
-
 		<if>
 			<isset var="workflowDefinitionTitle" />
 			<then>
@@ -949,8 +945,6 @@
 				<execute function="AssertTextEquals" locator1="WorkflowDefinition#DEFINITION_TABLE_TITLE" value1="${workflowDefinitionName}" />
 			</else>
 		</if>
-
-		<execute function="AssertTextEquals" locator1="WorkflowDefinition#DEFINITION_TABLE_ACTIVE" value1="Yes" />
 	</command>
 
 	<command name="viewMySubmissions">

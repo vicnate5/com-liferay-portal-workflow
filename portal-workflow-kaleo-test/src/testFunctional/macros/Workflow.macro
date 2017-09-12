@@ -933,12 +933,16 @@
 	</command>
 
 	<command name="viewDefinition">
+		<var name="key_workflowDefinitionTitle" value="${workflowDefinitionTitle}" />
+
 		<if>
 			<isset var="workflowDefinitionTitle" />
 			<then>
 				<execute function="AssertTextEquals" locator1="WorkflowDefinition#DEFINITION_TABLE_TITLE" value1="${workflowDefinitionTitle}" />
 			</then>
 			<else>
+				<var name="key_workflowDefinitionTitle" value="${workflowDefinitionName}" />
+
 				<execute function="AssertTextEquals" locator1="WorkflowDefinition#DEFINITION_TABLE_TITLE" value1="${workflowDefinitionName}" />
 			</else>
 		</if>

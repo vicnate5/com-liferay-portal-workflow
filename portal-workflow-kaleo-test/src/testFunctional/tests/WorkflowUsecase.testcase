@@ -905,7 +905,7 @@
 		</execute>
 
 		<execute macro="Workflow#reactivateInactiveWorkflowDefinition">
-			<var name="workflowDefinitionName" value="Uploaded Definition" />
+			<var name="workflowDefinitionTitle" value="New Uploaded Definition" />
 		</execute>
 	</command>
 

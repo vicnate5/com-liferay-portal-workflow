@@ -962,7 +962,7 @@
 
 	<command name="viewMySubmissionsTaskPreview">
 		<execute function="AssertTextEquals" locator1="WorkflowSubmissionsTask#PREVIEW" value1="Preview of ${workflowAssetType}" />
-		<execute function="AssertTextEquals" locator1="WorkflowSubmissionsTask#PREVIEW_TITLE" value1="${workflowAssetTitle}" />
+		<execute function="AssertTextEquals#assertPartialText" locator1="WorkflowSubmissionsTask#PREVIEW_TITLE" value1="${workflowAssetTitle}" />
 		<execute function="AssertTextEquals#assertPartialText" locator1="WorkflowSubmissionsTask#PREVIEW_CONTENT" value1="${workflowAssetContent}" />
 
 		<execute macro="SiteAdmin#viewPortletTitle">

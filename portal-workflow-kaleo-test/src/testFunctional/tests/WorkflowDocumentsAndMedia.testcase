@@ -41,8 +41,10 @@
 		<property name="portal.acceptance" value="pending" />
 		<property name="testray.component.names" value="Training" />
 
-		<execute macro="ProductMenu#gotoControlPanelConfiguration">
-			<var name="portlet" value="Workflow Definition" />
+		<execute macro="ProductMenu#gotoPortlet">
+			<var name="category" value="Configuration" />
+			<var name="panel" value="Control Panel" />
+			<var name="portlet" value="Workflow" />
 		</execute>
 
 		<execute macro="Workflow#uploadDefinition">
@@ -78,7 +80,7 @@
 		</execute>
 
 		<execute macro="User#assignRegularRoleCP">
-			<var name="roleName" value="Board Member" />
+			<var name="roleTitle" value="Board Member" />
 			<var name="userScreenName" value="test" />
 		</execute>
 

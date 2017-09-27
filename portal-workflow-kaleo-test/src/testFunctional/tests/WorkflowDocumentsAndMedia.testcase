@@ -118,7 +118,7 @@
 			</execute>
 
 			<execute macro="Workflow#approveTaskByActions">
-				<var name="boardworkflowtask" value="${i}" />
+				<var name="boardWorkflowTask" value="${i}" />
 				<var name="workflowAssetTitle" value="Document_1.doc" />
 				<var name="workflowAssetType" value="Document" />
 				<var name="workflowTask" value="Board Member Review ${i}" />
@@ -143,7 +143,7 @@
 			</execute>
 
 			<execute macro="Workflow#approveTaskByActions">
-				<var name="boardworkflowtask" value="${i}" />
+				<var name="boardWorkflowTask" value="${i}" />
 				<var name="workflowAssetTitle" value="Document_2.doc" />
 				<var name="workflowAssetType" value="Document" />
 				<var name="workflowTask" value="Board Member Review ${i}" />
@@ -168,7 +168,7 @@
 			</execute>
 
 			<execute macro="Workflow#approveTaskByActions">
-				<var name="boardworkflowtask" value="${i}" />
+				<var name="boardWorkflowTask" value="${i}" />
 				<var name="workflowAssetTitle" value="Document_3.doc" />
 				<var name="workflowAssetType" value="Document" />
 				<var name="workflowTask" value="Board Member Review ${i}" />

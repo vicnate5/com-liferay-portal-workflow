@@ -54,8 +54,7 @@ page import="com.liferay.portal.workflow.web.internal.search.WorkflowDefinitionS
 
 <%@ page import="java.text.Format" %>
 
-<%@ page import="java.util.ArrayList" %><%@
-page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 
 <%@ page import="javax.portlet.PortletURL" %><%@
 page import="javax.portlet.WindowState" %>

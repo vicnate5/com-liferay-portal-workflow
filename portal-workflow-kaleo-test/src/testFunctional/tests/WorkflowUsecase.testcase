@@ -1127,7 +1127,7 @@
 
 		<execute macro="Button#clickPublish" />
 
-		<execute function="AssertTextEquals" locator1="Message#ERROR_1" value1="Please enter a valid definition." />
+		<execute function="AssertTextEquals" locator1="Message#ERROR_1" value1="Please enter a valid definition before publishing." />
 	</command>
 
 	<command name="ViewTaskCount" priority="3">

@@ -1119,6 +1119,10 @@
 
 		<execute function="Click" locator1="Button#PLUS" />
 
+		<execute macro="PortletEntry#inputTitle">
+			<var name="title" value="Invalid Definition" />
+		</execute>
+
 		<execute function="UploadCommonFile#uploadCommonFileHidden" locator1="WorkflowUpload#FILE_UPLOAD" value1="Document_1.txt" />
 
 		<execute macro="Button#clickSave" />

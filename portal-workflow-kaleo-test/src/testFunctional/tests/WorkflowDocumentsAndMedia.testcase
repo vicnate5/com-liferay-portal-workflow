@@ -137,7 +137,7 @@
 		</execute>
 
 		<execute macro="User#assignRegularRoleCP">
-			<var name="roleName" value="Board Member" />
+			<var name="roleTitle" value="Board Member" />
 			<var name="userScreenName" value="usersn" />
 		</execute>
 

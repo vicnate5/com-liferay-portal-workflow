@@ -113,6 +113,7 @@ renderResponse.setTitle((workflowDefinition == null) ? LanguageUtil.get(request,
 			<aui:input name="name" type="hidden" value="<%= name %>" />
 			<aui:input name="version" type="hidden" value="<%= version %>" />
 			<aui:input name="content" type="hidden" value="<%= content %>" />
+			<aui:input name="successMessage" type="hidden" value='<%= active ? LanguageUtil.get(request, "workflow-updated-successfully") : LanguageUtil.get(request, "workflow-published-successfully") %>' />
 
 			<div class="card-horizontal main-content-card">
 				<div class="card-row-padded">

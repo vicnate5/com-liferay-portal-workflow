@@ -331,6 +331,8 @@
 
 		<execute function="Click" locator1="Button#DONE" />
 
+		<execute function="AssertElementPresent" locator1="Message#SUCCESS" />
+
 		<execute macro="Alert#viewSuccessMessage" />
 	</command>
 

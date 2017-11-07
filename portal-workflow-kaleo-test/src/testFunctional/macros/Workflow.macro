@@ -330,16 +330,12 @@
 		<execute function="AssertElementPresent" locator1="Button#DONE" />
 
 		<execute function="Click" locator1="Button#DONE" />
-
-		<execute macro="Alert#viewSuccessMessage" />
 	</command>
 
 	<command name="confirmAndViewSucessMessageViaDetails">
 		<execute macro="IFrame#selectConfigurationFrame" />
 
 		<execute function="AssertClick" locator1="Button#DONE" value1="Done" />
-
-		<execute macro="Alert#viewSuccessMessage" />
 	</command>
 
 	<command name="deactivateAddedWorkflowDefinition">

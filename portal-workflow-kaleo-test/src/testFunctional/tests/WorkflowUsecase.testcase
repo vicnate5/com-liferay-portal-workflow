@@ -1080,7 +1080,7 @@
 
 		<execute macro="Workflow#clickAssignToMeByDetails" />
 
-		<execute macro="Workflow#confirmAndViewSucessMessageViaDetails" />
+		<execute macro="Workflow#confirmWorkflowAction" />
 
 		<execute macro="Navigator#gotoPage">
 			<var name="pageName" value="Blogs Page" />
@@ -1103,7 +1103,7 @@
 
 		<execute macro="Workflow#clickApproveByDetails" />
 
-		<execute macro="Workflow#confirmAndViewSucessMessageViaDetails" />
+		<execute macro="Workflow#confirmWorkflowAction" />
 
 		<execute macro="Navigator#gotoPage">
 			<var name="pageName" value="Blogs Page" />

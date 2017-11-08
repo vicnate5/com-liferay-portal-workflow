@@ -330,6 +330,8 @@
 		<execute function="AssertElementPresent" locator1="Button#DONE" />
 
 		<execute function="Click" locator1="Button#DONE" />
+
+		<execute function="Pause" locator1="5000" />
 	</command>
 
 	<command name="deactivateAddedWorkflowDefinition">

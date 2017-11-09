@@ -331,7 +331,7 @@
 
 		<execute function="Click" locator1="Button#DONE" />
 
-		<execute function="Pause" locator1="5000" />
+		<execute function="Pause" locator1="10000" />
 	</command>
 
 	<command name="deactivateAddedWorkflowDefinition">

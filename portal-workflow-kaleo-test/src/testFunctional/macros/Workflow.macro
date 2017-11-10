@@ -815,6 +815,8 @@
 				<execute function="AssertTextEquals#assertPartialText" locator1="Portlet#HEADER" value1="${workflowDefinitionUploadTitle}" />
 			</then>
 		</if>
+
+		<execute macro="Navigator#gotoBack" />
 	</command>
 
 	<command name="viewAssignedToMyRolesTasksCP">

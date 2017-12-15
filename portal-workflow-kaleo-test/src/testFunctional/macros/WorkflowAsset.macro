@@ -14,12 +14,29 @@
 		<execute macro="Notifications#gotoNotifications" />
 
 		<if>
-			<isset var="user" />
+			<and>
+				<equals arg1="${read}" arg2="true" />
+				<isset var="user" />
+			</and>
 			<then>
-				<execute function="AssertClick" locator1="Notifications#NOTIFICATIONS_WORKFLOW_TITLE" value1="${user} sent you a ${assetType} for review in the workflow." />
+				<execute function="AssertClick" locator1="Notifications#NOTIFICATIONS_WORKFLOW_TITLE_READ" value1="${user} sent you a ${assetType} for review in the workflow." />
 			</then>
+			<elseif>
+				<equals arg1="${read}" arg2="true" />
+				<then>
+					<execute function="AssertClick" locator1="Notifications#NOTIFICATIONS_WORKFLOW_TITLE_READ" value1="sent you a ${assetType} for review in the workflow." />
+				</then>
+			</elseif>
 			<else>
-				<execute function="AssertClick" locator1="Notifications#NOTIFICATIONS_WORKFLOW_TITLE" value1="sent you a ${assetType} for review in the workflow." />
+				<if>
+					<isset var="user" />
+					<then>
+						<execute function="AssertClick" locator1="Notifications#NOTIFICATIONS_WORKFLOW_TITLE" value1="${user} sent you a ${assetType} for review in the workflow." />
+					</then>
+					<else>
+						<execute function="AssertClick" locator1="Notifications#NOTIFICATIONS_WORKFLOW_TITLE" value1="sent you a ${assetType} for review in the workflow." />
+					</else>
+				</if>
 			</else>
 		</if>
 	</command>
@@ -63,7 +80,15 @@
 	</command>
 
 	<command name="viewNotification">
-		<execute function="AssertTextEquals" locator1="Notifications#NOTIFICATIONS_WORKFLOW_TITLE" value1="${contentBody}" />
+		<if>
+			<equals arg1="${read}" arg2="true" />
+			<then>
+				<execute function="AssertTextEquals" locator1="Notifications#NOTIFICATIONS_WORKFLOW_TITLE_READ" value1="${contentBody}" />
+			</then>
+			<else>
+				<execute function="AssertTextEquals" locator1="Notifications#NOTIFICATIONS_WORKFLOW_TITLE" value1="${contentBody}" />
+			</else>
+		</if>
 	</command>
 
 	<command name="viewUserDetails">

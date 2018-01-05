@@ -1059,9 +1059,11 @@
 			<var name="portlet" value="Workflow" />
 		</execute>
 
-		<execute macro="Workflow#reactivateInactiveWorkflowDefinition">
+		<execute macro="Workflow#publishExistingWorkflowDefinition">
 			<var name="workflowDefinitionTitle" value="New Uploaded Definition" />
 		</execute>
+
+		<execute macro="Navigator#gotoBack" />
 	</command>
 
 	<command name="DeactivateAndDeleteUploadedDefinition" priority="5">

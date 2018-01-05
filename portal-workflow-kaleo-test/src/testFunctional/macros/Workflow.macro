@@ -428,6 +428,20 @@
 		<execute macro="Workflow#gotoPreviewView" />
 	</command>
 
+	<command name="publishExistingWorkflowDefinition">
+		<var name="key_workflowDefinitionTitle" value="${workflowDefinitionTitle}" />
+
+		<execute function="Click" locator1="WorkflowDefinition#DEFINITION_TABLE_SPECIFIC_DEFINITION_ELLIPSIS" />
+
+		<execute function="AssertClick" locator1="MenuItem#ANY_MENU_ITEM" value1="Edit">
+			<var name="key_menuItem" value="Edit" />
+		</execute>
+
+		<execute macro="PortletEntry#publish" />
+
+		<execute macro="Workflow#waitForSuccessMessageHide" />
+	</command>
+
 	<command name="reactivateInactiveWorkflowDefinition">
 		<var name="key_workflowDefinitionTitle" value="${workflowDefinitionTitle}" />
 

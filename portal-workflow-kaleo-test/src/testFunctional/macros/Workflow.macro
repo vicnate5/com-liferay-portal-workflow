@@ -358,6 +358,8 @@
 		<execute function="AssertTextEquals" locator1="Message#SUCCESS" value1="Workflow deleted successfully." />
 
 		<execute macro="Workflow#waitForSuccessMessageHide" />
+
+		<execute function="AssertElementNotPresent" locator1="WorkflowDefinition#DEFINITION_TABLE_TITLE" />
 	</command>
 
 	<command name="gotoAssetViaTableTitle">

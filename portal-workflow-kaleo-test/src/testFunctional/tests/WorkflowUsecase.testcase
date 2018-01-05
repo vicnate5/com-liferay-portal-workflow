@@ -1049,7 +1049,9 @@
 			<var name="workflowDefinitionVersionNumber" value="1" />
 		</execute>
 
-		<execute macro="Workflow#deactivateAddedWorkflowDefinition" />
+		<execute macro="Workflow#unpublishWorkflowDefinition">
+			<var name="workflowDefinitionTitle" value="New Uploaded Definition" />
+		</execute>
 
 		<execute macro="ProductMenu#gotoPortlet">
 			<var name="category" value="Configuration" />
@@ -1086,7 +1088,9 @@
 			<var name="workflowDefinitionVersionNumber" value="1" />
 		</execute>
 
-		<execute macro="Workflow#deactivateAddedWorkflowDefinition" />
+		<execute macro="Workflow#unpublishWorkflowDefinition">
+			<var name="workflowDefinitionTitle" value="New Uploaded Definition" />
+		</execute>
 
 		<execute macro="ProductMenu#gotoPortlet">
 			<var name="category" value="Configuration" />
@@ -1094,7 +1098,9 @@
 			<var name="portlet" value="Workflow" />
 		</execute>
 
-		<execute macro="Workflow#deleteWorkflowDefinition" />
+		<execute macro="Workflow#deleteWorkflowDefinition">
+			<var name="workflowDefinitionTitle" value="New Uploaded Definition" />
+		</execute>
 	</command>
 
 	<command name="ViewBlogsEntryWorkflowViaNotifications" priority="3">

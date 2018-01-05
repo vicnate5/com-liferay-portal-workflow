@@ -334,51 +334,17 @@
 		<execute macro="Workflow#waitForSuccessMessageHide" />
 	</command>
 
-	<command name="deactivateAddedWorkflowDefinition">
-		<execute function="Click" locator1="WorkflowDefinition#DEFINITION_TABLE_ADDED_DEFINITION_ELLIPSIS" />
-
-		<execute macro="Workflow#deactivateWorkflowDefinitionCmd" />
-	</command>
-
-	<command name="deactivateSpecificWorkflowDefinition">
-		<var name="key_workflowDefinitionTitle" value="${workflowDefinitionTitle}" />
-
-		<execute function="Click" locator1="WorkflowDefinition#DEFINITION_TABLE_SPECIFIC_DEFINITION_ELLIPSIS" />
-
-		<execute macro="Workflow#deactivateWorkflowDefinitionCmd" />
-	</command>
-
-	<command name="deactivateWorkflowDefinition">
-		<execute function="Click" locator1="WorkflowDefinition#DEFINITION_TABLE_ADDED_DEFINITION_ELLIPSIS" />
-
-		<execute macro="Workflow#deactivateWorkflowDefinitionCmd" />
-	</command>
-
-	<command name="deactivateWorkflowDefinitionCmd">
-		<execute function="AssertClickNoError" locator1="MenuItem#ANY_MENU_ITEM" value1="Unpublish">
-			<var name="key_menuItem" value="Unpublish" />
-		</execute>
-
-		<execute function="AssertTextEquals" locator1="Message#SUCCESS" value1="Workflow unpublished successfully." />
-
-		<execute macro="Workflow#waitForSuccessMessageHide" />
-	</command>
-
 	<command name="deleteSpecificWorkflowDefinition">
-		<var name="key_workflowDefinitionTitle" value="${workflowDefinitionTitle}" />
-
-		<execute function="Click" locator1="WorkflowDefinition#DEFINITION_TABLE_SPECIFIC_DEFINITION_ELLIPSIS" />
-
-		<execute macro="Workflow#deleteWorkflowDefinitionCmd" />
+		<execute macro="Workflow#deleteWorkflowDefinition">
+			<var name="workflowDefinitionTitle" value="${workflowDefinitionTitle}" />
+		</execute>
 	</command>
 
 	<command name="deleteWorkflowDefinition">
-		<execute function="Click" locator1="WorkflowDefinition#DEFINITION_TABLE_ADDED_DEFINITION_ELLIPSIS" />
+		<var name="key_workflowDefinitionTitle" value="${workflowDefinitionTitle}" />
 
-		<execute macro="Workflow#deleteWorkflowDefinitionCmd" />
-	</command>
+		<execute function="Click" locator1="WorkflowDefinition#DEFINITION_TABLE_SPECIFIC_DEFINITION_ELLIPSIS" />
 
-	<command name="deleteWorkflowDefinitionCmd">
 		<execute function="AssertClickNoError" locator1="MenuItem#ANY_MENU_ITEM" value1="Delete">
 			<var name="key_menuItem" value="Delete" />
 		</execute>
@@ -668,11 +634,13 @@
 		<while>
 			<condition function="IsElementPresent" locator1="WorkflowDefinition#DEFINITION_TABLE_SPECIFIC_DEFINITION_ELLIPSIS" />
 			<then>
-				<execute macro="Workflow#deactivateSpecificWorkflowDefinition">
+				<execute macro="Workflow#unpublishSpecificWorkflowDefinition">
 					<var name="workflowDefinitionTitle" value="Join Xor" />
 				</execute>
 
-				<execute macro="Workflow#deleteWorkflowDefinition" />
+				<execute macro="Workflow#deleteWorkflowDefinition">
+					<var name="workflowDefinitionTitle" value="Join Xor" />
+				</execute>
 			</then>
 		</while>
 	</command>
@@ -709,11 +677,25 @@
 		<while>
 			<condition function="IsElementPresent" locator1="WorkflowDefinition#DEFINITION_TABLE_ADDED_DEFINITION_ELLIPSIS" />
 			<then>
-				<execute macro="Workflow#deactivateAddedWorkflowDefinition" />
+				<execute macro="Workflow#unpublishWorkflowDefinition" />
 
 				<execute macro="Workflow#deleteWorkflowDefinition" />
 			</then>
 		</while>
+	</command>
+
+	<command name="unpublishWorkflowDefinition">
+		<var name="key_workflowDefinitionTitle" value="${workflowDefinitionTitle}" />
+
+		<execute function="Click" locator1="WorkflowDefinition#DEFINITION_TABLE_SPECIFIC_DEFINITION_ELLIPSIS" />
+
+		<execute function="AssertClickNoError" locator1="MenuItem#ANY_MENU_ITEM" value1="Unpublish">
+			<var name="key_menuItem" value="Unpublish" />
+		</execute>
+
+		<execute function="AssertTextEquals" locator1="Message#SUCCESS" value1="Workflow unpublished successfully." />
+
+		<execute macro="Workflow#waitForSuccessMessageHide" />
 	</command>
 
 	<command name="updateDueDateAssignedToMeTaskByActions">

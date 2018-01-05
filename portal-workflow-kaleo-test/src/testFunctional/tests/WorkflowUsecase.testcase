@@ -1064,6 +1064,11 @@
 		</execute>
 
 		<execute macro="Navigator#gotoBack" />
+
+		<execute macro="Workflow#viewDefinition">
+			<var name="workflowDefinitionTitle" value="New Uploaded Definition" />
+			<var name="workflowDefinitionVersionNumber" value="1" />
+		</execute>
 	</command>
 
 	<command name="DeactivateAndDeleteUploadedDefinition" priority="5">

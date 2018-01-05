@@ -648,7 +648,7 @@
 		<while>
 			<condition function="IsElementPresent" locator1="WorkflowDefinition#DEFINITION_TABLE_SPECIFIC_DEFINITION_ELLIPSIS" />
 			<then>
-				<execute macro="Workflow#unpublishSpecificWorkflowDefinition">
+				<execute macro="Workflow#unpublishWorkflowDefinition">
 					<var name="workflowDefinitionTitle" value="Join Xor" />
 				</execute>
 

@@ -437,9 +437,17 @@
 			<var name="key_menuItem" value="Edit" />
 		</execute>
 
+		<execute macro="Workflow#viewDefinitionPublicationStatus">
+			<var name="status" value="Not Published" />
+		</execute>
+
 		<execute macro="PortletEntry#publish" />
 
 		<execute macro="Workflow#waitForSuccessMessageHide" />
+
+		<execute macro="Workflow#viewDefinitionPublicationStatus">
+			<var name="status" value="Published" />
+		</execute>
 	</command>
 
 	<command name="reactivateInactiveWorkflowDefinition">
@@ -971,6 +979,22 @@
 				<execute function="AssertTextEquals" locator1="WorkflowDefinition#DEFINITION_TABLE_TITLE" value1="${workflowDefinitionName}" />
 			</else>
 		</if>
+	</command>
+
+	<command name="viewDefinitionPublicationStatus">
+		<execute function="AssertTextEquals" locator1="WorkflowDefinition#PUBLICATION_STATUS" value1="${status}" />
+	</command>
+
+	<command name="viewDefinitionPublished">
+		<var name="key_workflowDefinitionTitle" value="${workflowDefinitionTitle}" />
+
+		<execute function="AssertTextEquals" locator1="WorkflowDefinition#DEFINITION_TABLE_TITLE_PUBLISHED" value1="${workflowDefinitionTitle}" />
+	</command>
+
+	<command name="viewDefinitionUnpublished">
+		<var name="key_workflowDefinitionTitle" value="${workflowDefinitionTitle}" />
+
+		<execute function="AssertTextEquals" locator1="WorkflowDefinition#DEFINITION_TABLE_TITLE_UNPUBLISHED" value1="${workflowDefinitionTitle}" />
 	</command>
 
 	<command name="viewMySubmissions">

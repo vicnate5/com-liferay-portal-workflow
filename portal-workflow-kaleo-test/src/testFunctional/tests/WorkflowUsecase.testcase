@@ -1051,9 +1051,8 @@
 			<var name="portlet" value="Workflow" />
 		</execute>
 
-		<execute macro="Workflow#viewDefinition">
+		<execute macro="Workflow#viewDefinitionPublished">
 			<var name="workflowDefinitionTitle" value="New Uploaded Definition" />
-			<var name="workflowDefinitionVersionNumber" value="1" />
 		</execute>
 
 		<execute macro="Workflow#unpublishWorkflowDefinition">
@@ -1064,6 +1063,10 @@
 			<var name="category" value="Configuration" />
 			<var name="panel" value="Control Panel" />
 			<var name="portlet" value="Workflow" />
+		</execute>
+
+		<execute macro="Workflow#viewDefinitionUnpublished">
+			<var name="workflowDefinitionTitle" value="New Uploaded Definition" />
 		</execute>
 
 		<execute macro="Workflow#deleteWorkflowDefinition">
@@ -1083,9 +1086,8 @@
 			<var name="workflowDefinitionTitle" value="New Uploaded Definition" />
 		</execute>
 
-		<execute macro="Workflow#viewDefinition">
+		<execute macro="Workflow#viewDefinitionPublished">
 			<var name="workflowDefinitionTitle" value="New Uploaded Definition" />
-			<var name="workflowDefinitionVersionNumber" value="1" />
 		</execute>
 
 		<execute macro="Workflow#unpublishWorkflowDefinition">
@@ -1098,15 +1100,18 @@
 			<var name="portlet" value="Workflow" />
 		</execute>
 
+		<execute macro="Workflow#viewDefinitionUnpublished">
+			<var name="workflowDefinitionTitle" value="New Uploaded Definition" />
+		</execute>
+
 		<execute macro="Workflow#publishExistingWorkflowDefinition">
 			<var name="workflowDefinitionTitle" value="New Uploaded Definition" />
 		</execute>
 
 		<execute macro="Navigator#gotoBack" />
 
-		<execute macro="Workflow#viewDefinition">
+		<execute macro="Workflow#viewDefinitionPublished">
 			<var name="workflowDefinitionTitle" value="New Uploaded Definition" />
-			<var name="workflowDefinitionVersionNumber" value="1" />
 		</execute>
 	</command>
 

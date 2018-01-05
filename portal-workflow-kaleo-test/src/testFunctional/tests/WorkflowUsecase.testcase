@@ -1032,7 +1032,7 @@
 		</execute>
 	</command>
 
-	<command name="DeactivateAndActivateUploadedDefinition" priority="3">
+	<command name="UnpublishAndPublishUploadedDefinition" priority="3">
 		<execute macro="ProductMenu#gotoPortlet">
 			<var name="category" value="Configuration" />
 			<var name="panel" value="Control Panel" />
@@ -1071,7 +1071,7 @@
 		</execute>
 	</command>
 
-	<command name="DeactivateAndDeleteUploadedDefinition" priority="5">
+	<command name="UnpublishAndDeleteUploadedDefinition" priority="5">
 		<execute macro="ProductMenu#gotoPortlet">
 			<var name="category" value="Configuration" />
 			<var name="panel" value="Control Panel" />

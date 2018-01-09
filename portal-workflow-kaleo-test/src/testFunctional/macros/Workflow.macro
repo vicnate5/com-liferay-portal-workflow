@@ -742,7 +742,10 @@
 			<var name="key_menuItem" value="Update Due Date" />
 		</execute>
 
-		<execute function="Type" locator1="MyWorkflowTasks#DIALOG_BOX_DUE_DATE" value1="${workflowDueDate}" />
+		<var method="DateUtil#getCurrentYear()" name="currentYear" />
+		<var method="MathUtil#sum('${currentYear}', '1')" name="futureYear" />
+
+		<execute function="Type" locator1="MyWorkflowTasks#DIALOG_BOX_DUE_DATE" value1="4/11/${futureYear}" />
 		<execute function="Type" locator1="MyWorkflowTasks#DIALOG_BOX_DUE_DATE_TIME" value1="${workflowDueDateTime}" />
 
 		<if>
@@ -786,7 +789,10 @@
 			<var name="key_menuItem" value="Update Due Date" />
 		</execute>
 
-		<execute function="Type" locator1="MyWorkflowTasks#DIALOG_BOX_DUE_DATE" value1="${workflowDueDate}" />
+		<var method="DateUtil#getCurrentYear()" name="currentYear" />
+		<var method="MathUtil#sum('${currentYear}', '1')" name="futureYear" />
+
+		<execute function="Type" locator1="MyWorkflowTasks#DIALOG_BOX_DUE_DATE" value1="4/11/${futureYear}" />
 		<execute function="Type" locator1="MyWorkflowTasks#DIALOG_BOX_DUE_DATE_TIME" value1="${workflowDueDateTime}" />
 
 		<if>
